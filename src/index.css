@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.main-content {
+  margin-left: 220px; /* set the margin-left to the sidebar width + some space */
+  padding: 20px;
+  z-index: 0; /* set z-index so that the main content appears behind the sidebar */
+}
+.position-fixed {
+  position: fixed;
+  z-index: 1;
+}
+
+.position-relative {
+  position: relative;
+}
+th:hover {
+  cursor: pointer;
+  color: grey;
+}

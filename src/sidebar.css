@@ -1,0 +1,39 @@
+.sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    border-right: 1px solid #dee2e6;
+    z-index: 1; /* set z-index so that the sidebar appears on top of other elements */
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar-header h3 {
+    color: #343a40;
+}
+
+.components li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.components li:last-child {
+    border-bottom: none;
+}
+
+.components li a {
+    color: #343a40;
+    font-weight: 500;
+}
+
+.components li a:hover {
+    text-decoration: none;
+    color: #007bff;
+}
