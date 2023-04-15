@@ -1,5 +1,6 @@
 import React from 'react';
 import SortTable from "../components/SortTable";
+import ThreeLineBreak from "../components/ThreeLineBreak";
 
 const config = [
     {
@@ -35,6 +36,7 @@ const config = [
 function CourseTable({tableData}) {
     return (
         <div>
+            <ThreeLineBreak/>
             <SortTable tableData={tableData} config={config}/>
         </div>
     )

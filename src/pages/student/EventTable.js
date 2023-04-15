@@ -1,4 +1,6 @@
 import SortTable from "../components/SortTable";
+import ThreeLineBreak from "../components/ThreeLineBreak";
+import React from "react";
 
 const config=[
     {
@@ -28,7 +30,10 @@ const config=[
 ]
 const EventTable=({tableData})=>{
     return (
-        <SortTable tableData={tableData} config={config}/>
+        <div>
+            <ThreeLineBreak/>
+            <SortTable tableData={tableData} config={config}/>
+        </div>
     )
 }
 export default EventTable

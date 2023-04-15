@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
+import ThreeLineBreak from "../components/ThreeLineBreak";
 
 const TemporaryEventForm = () => {
     const today = new Date();
@@ -40,15 +41,17 @@ const TemporaryEventForm = () => {
     };
 
     return (
+        <div>
+            <ThreeLineBreak/>
         <Form onSubmit={handleSubmit}>
             <Form.Group as={Row} controlId="eventName">
                 <Form.Label column sm={3}>
-                    Name
+                    名称
                 </Form.Label>
                 <Col sm={9}>
                     <Form.Control
                         type="text"
-                        placeholder="Enter event name"
+                        placeholder="输入事务名称"
                         name="name"
                         value={event.name}
                         onChange={handleChange}
@@ -58,12 +61,12 @@ const TemporaryEventForm = () => {
 
             <Form.Group as={Row} controlId="eventStartYear">
                 <Form.Label column sm={3}>
-                    Year
+                    年份
                 </Form.Label>
                 <Col sm={9}>
                     <Form.Control
                         type="number"
-                        placeholder="Enter start year"
+                        placeholder="输入开始年份"
                         name="startYear"
                         value={event.startYear}
                         onChange={handleChange}
@@ -73,12 +76,12 @@ const TemporaryEventForm = () => {
 
             <Form.Group as={Row} controlId="eventStartMonth">
                 <Form.Label column sm={3}>
-                    Month
+                    月份
                 </Form.Label>
                 <Col sm={9}>
                     <Form.Control
                         type="number"
-                        placeholder="Enter start month"
+                        placeholder="输入开始月份"
                         name="startMonth"
                         value={event.startMonth}
                         onChange={handleChange}
@@ -88,12 +91,12 @@ const TemporaryEventForm = () => {
 
             <Form.Group as={Row} controlId="eventStartDay">
                 <Form.Label column sm={3}>
-                    Day
+                    日期
                 </Form.Label>
                 <Col sm={9}>
                     <Form.Control
                         type="number"
-                        placeholder="Enter start day"
+                        placeholder="输入开始日期"
                         name="startDay"
                         value={event.startDay}
                         onChange={handleChange}
@@ -103,24 +106,24 @@ const TemporaryEventForm = () => {
 
             <Form.Group as={Row} controlId="eventStartHour">
                 <Form.Label column sm={3}>
-                    Hour
+                    小时
                 </Form.Label>
                 <Col sm={9}>
                     <Form.Control
                         type="number"
-                        placeholder="Enter start hour"
+                        placeholder="输入开始时间（小时）"
                         name="startHour"
                         value={event.startHour}
                         onChange={handleChange}
                     />
                 </Col>
                 <Form.Label column sm={3}>
-                    Duration (hours)
+                    持续时间（小时）
                 </Form.Label>
                 <Col sm={9}>
                     <Form.Control
                         type="number"
-                        placeholder="Enter duration"
+                        placeholder="输入持续时间"
                         name="duration"
                         value={event.duration}
                         onChange={handleChange}
@@ -130,7 +133,7 @@ const TemporaryEventForm = () => {
 
             <Form.Group as={Row} controlId="eventReType">
                 <Form.Label column sm={3}>
-                    Repeat type
+                    重复类型
                 </Form.Label>
                 <Col sm={9}>
                     <Form.Control
@@ -139,22 +142,22 @@ const TemporaryEventForm = () => {
                         value={event.reType}
                         onChange={handleChange}
                     >
-                        <option value="">Choose...</option>
-                        <option value="0">Once</option>
-                        <option value="1">Everyday</option>
-                        <option value="2">Each week</option>
+                        <option value="">选择...</option>
+                        <option value="0">一次性</option>
+                        <option value="1">每天</option>
+                        <option value="2">每周</option>
                     </Form.Control>
                 </Col>
             </Form.Group>
 
             <Form.Group as={Row} controlId="eventOnline">
                 <Form.Label column sm={3}>
-                    Online
+                    是否线上
                 </Form.Label>
                 <Col sm={9}>
                     <Form.Check
                         type="checkbox"
-                        label="Check if the event is online"
+                        label=""
                         name="online"
                         checked={event.online}
                         onChange={(e) =>
@@ -174,12 +177,12 @@ const TemporaryEventForm = () => {
                 <div>
                     <Form.Group as={Row} controlId="eventPlatform">
                         <Form.Label column sm={3}>
-                            Platform
+                            平台
                         </Form.Label>
                         <Col sm={9}>
                             <Form.Control
                                 type="text"
-                                placeholder="Enter platform name"
+                                placeholder="输入平台名称"
                                 name="platform"
                                 value={event.platform}
                                 onChange={handleChange}
@@ -189,12 +192,12 @@ const TemporaryEventForm = () => {
 
                     <Form.Group as={Row} controlId="eventWebsite">
                         <Form.Label column sm={3}>
-                            Website
+                            网址
                         </Form.Label>
                         <Col sm={9}>
                             <Form.Control
                                 type="text"
-                                placeholder="Enter website URL"
+                                placeholder="输入网址"
                                 name="website"
                                 value={event.website}
                                 onChange={handleChange}
@@ -205,12 +208,12 @@ const TemporaryEventForm = () => {
             ) : (
                 <Form.Group as={Row} controlId="eventLocation">
                     <Form.Label column sm={3}>
-                        Location
+                        地点
                     </Form.Label>
                     <Col sm={9}>
                         <Form.Control
                             type="text"
-                            placeholder="Enter location"
+                            placeholder="输入地点"
                             name="location"
                             value={event.location}
                             onChange={handleChange}
@@ -221,12 +224,12 @@ const TemporaryEventForm = () => {
 
             <Form.Group as={Row} controlId="eventGenre">
                 <Form.Label column sm={3}>
-                    Genre
+                    类型
                 </Form.Label>
                 <Col sm={9}>
                     <Form.Control
                         type="text"
-                        placeholder="Enter genre"
+                        placeholder="输入事务类型"
                         name="genre"
                         value={event.genre}
                         onChange={handleChange}
@@ -236,12 +239,12 @@ const TemporaryEventForm = () => {
 
             <Form.Group as={Row} controlId="eventGroup">
                 <Form.Label column sm={3}>
-                    Group
+                    群体事务
                 </Form.Label>
                 <Col sm={9}>
                     <Form.Check
                         type="checkbox"
-                        label="Check if the event is for group"
+                        label="是否群体事务"
                         name="group"
                         checked={event.group}
                         onChange={handleChange}
@@ -252,9 +255,10 @@ const TemporaryEventForm = () => {
             
 
             <Button variant="primary" type="submit">
-                Submit
+                提交
             </Button>
         </Form>
+        </div>
     );
 }
 

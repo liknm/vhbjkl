@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Table, Modal} from 'react-bootstrap';
-
+import {intToWeekday} from "../utils/functions";
+import ThreeLineBreak from "../components/ThreeLineBreak";
 function ScheduleTable({scheduleData}) {
     const [showModal, setShowModal] = useState(false);
     const [modalData, setModalData] = useState(null);
@@ -23,17 +24,18 @@ function ScheduleTable({scheduleData}) {
 
     return (
         <>
+            <ThreeLineBreak/>
             <Table bordered hover>
                 <thead>
                 <tr>
                     <th></th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
-                    <th>Sunday</th>
+                    <th>星期一</th>
+                    <th>星期二</th>
+                    <th>星期三</th>
+                    <th>星期四</th>
+                    <th>星期五</th>
+                    <th>星期六</th>
+                    <th>星期日</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -69,10 +71,10 @@ function ScheduleTable({scheduleData}) {
                     {modalData && (
                         <div>
                             <div>ID: {modalData.id}</div>
-                            <div>Start Time: {modalData.start}:00</div>
-                            <div>Duration: {modalData.duration} hour(s)</div>
-                            <div>Weekday: {modalData.weekday}</div>
-                            <div>Location: {modalData.location}</div>
+                            <div>开始时间: {modalData.start}:00</div>
+                            <div>持续时间: {modalData.duration} hour(s)</div>
+                            <div>上课日期: {intToWeekday(modalData.weekday)}</div>
+                            <div>位置: {modalData.location}</div>
                         </div>
                     )}
                 </Modal.Body>
