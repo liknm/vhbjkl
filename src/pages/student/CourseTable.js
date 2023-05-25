@@ -1,45 +1,55 @@
-import React from 'react';
-import SortTable from "../components/SortTable";
-import ThreeLineBreak from "../components/ThreeLineBreak";
+import SortTable from "../../components/SortTable";
+import {useEffect, useState} from "react";
+import courseService from '../../services/course'
+import locationList from '../../utils/locationList.json'
+const CourseTable =  () => {
+    const [data,setData]=useState([])
+    useEffect( () => {
+        courseService.getAll()
+            .then((result)=>{
 
-const config = [
-    {
-        key: 'id',
-        name: 'ID'
-    },
-    {
-        key: 'name',
-        name: '课程名称'
-    },
-    {
-        key: 'hour',
-        name: '上课时间（小时）'
-    },
-    {
-        key: 'day',
-        name: '上课日期（星期几）'
-    },
-    {
-        key: 'duration',
-        name: '持续时长'
-    },
-    {
-        key: 'frequency',
-        name: '重复频率'
-    },
-    {
-        key: 'location',
-        name: '上课地点'
-    }
-];
-
-function CourseTable({tableData}) {
-    return (
-        <div>
-            <ThreeLineBreak/>
-            <SortTable tableData={tableData} config={config}/>
-        </div>
-    )
+                setData(result)
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+    },[])
+    const columns=[
+        {
+            key:'id',
+            name:'ID',
+            selector:row=>row.id
+        },
+        {
+            key:'name',
+            name:'课程名称',
+            selector:row=>row.name
+        },
+        {
+            key:'start',
+            name:'开始时间',
+            selector:row => row.startTime
+        },
+        {
+            key:'end',
+            name:'结束时间',
+            selector:row=>(row.startTime+row.duration)
+        },
+        {
+            key:'periodic',
+            name:'周期性',
+            selector:row=>(row.periodic?'是':'否')
+        },
+        {
+            key:'location',
+            name:'课程地点',
+            selector:row=>locationList[row.location].name
+        }
+    ]
+  return (
+      <div>
+          <SortTable columns={columns} tableData={data}/>
+      </div>
+  )
 }
-
-export default CourseTable;
+export default CourseTable

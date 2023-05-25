@@ -1,5 +1,5 @@
-import SortTable from "../components/SortTable";
-import ThreeLineBreak from "../components/ThreeLineBreak";
+import SortTable from "../../components/SortTable";
+import ThreeLineBreak from "../../components/ThreeLineBreak";
 import React from "react";
 
 const config=[

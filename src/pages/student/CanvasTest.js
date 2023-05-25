@@ -1,3 +1,4 @@
+/*
 import mapImage from '../imgs/xtc.jpg'
 const CanvasTest=()=>{
     const img=new Image()
@@ -9,4 +10,4 @@ return (
     </div>
 )
 }
-export default CanvasTest
+export default CanvasTest*/

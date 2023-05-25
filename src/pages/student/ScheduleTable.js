@@ -1,7 +1,8 @@
+/*
 import React, {useState} from 'react';
 import {Table, Modal} from 'react-bootstrap';
-import {intToWeekday} from "../utils/functions";
-import ThreeLineBreak from "../components/ThreeLineBreak";
+import {intToWeekday} from "../../utils/functions";
+import ThreeLineBreak from '../../components/ThreeLineBreak'
 function ScheduleTable({scheduleData}) {
     const [showModal, setShowModal] = useState(false);
     const [modalData, setModalData] = useState(null);
@@ -84,3 +85,12 @@ function ScheduleTable({scheduleData}) {
 }
 
 export default ScheduleTable;
+*/
+const ScheduleTable = () => {
+  return (
+      <div>
+          ScheduleTable
+      </div>
+  )
+}
+export default ScheduleTable

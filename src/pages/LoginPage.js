@@ -1,18 +1,23 @@
 import React, {useState} from 'react';
 import {Form, Button, ButtonGroup, Container, Row, Col, Alert} from 'react-bootstrap';
 import {useDispatch} from 'react-redux';
-import {login} from '../reducers/userReducer';
 import {Link, useNavigate} from "react-router-dom";
-import {eventData} from "../utils/testCases";
-
+import userService from '../services/api'
+import {setUser} from "../slice/userSlice";
+import cookie, {setCookie} from "../utils/cookie";
 function LoginPage() {
-    const [userId, setUserId] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [showAlert, setShowAlert] = useState(false);
+    const [userGroup,setUserGroup]=useState('student')
     const dispatch = useDispatch();
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(login())
+        const userClass=userService.login(username,password,userGroup)
+        if (userClass) {
+            dispatch(setUser({username, password, userGroup}))
+            setCookie(username,userGroup,userClass)
+        }
     };
 
     return (
@@ -32,8 +37,8 @@ function LoginPage() {
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="userId">
                             <Form.Label>用户ID</Form.Label>
-                            <Form.Control type="text" placeholder="请输入用户ID" value={userId}
-                                          onChange={(e) => setUserId(e.target.value)}/>
+                            <Form.Control type="text" placeholder="请输入用户ID" value={username}
+                                          onChange={(e) => setUsername(e.target.value)}/>
                         </Form.Group>
 
                         <Form.Group controlId="password">

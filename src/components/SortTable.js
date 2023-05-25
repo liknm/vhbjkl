@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Table } from 'react-bootstrap';
 
-function CourseTable({ tableData ,config}) {
+function CourseTable({ tableData, columns }) {
     const [sortConfig, setSortConfig] = useState({
         key: '',
         direction: '',
@@ -29,31 +29,17 @@ function CourseTable({ tableData ,config}) {
         <Table striped bordered hover>
             <thead>
             <tr>
-                {/*<th onClick={() => onSort('id')}>ID</th>
-                <th onClick={() => onSort('name')}>考试名称</th>
-                <th onClick={() => onSort('start')}>开始时间</th>
-                <th onClick={() => onSort('end')}>结束时间</th>
-                <th onClick={() => onSort('location')}>考试地点</th>*/}
-                {
-                    config.map(column=>{
-                        return (
-                            <th onClick={()=>onSort(column.key)}>{column.name}</th>
-                        )
-                    })
-                }
+                {columns.map((column,index) => (
+                    <th onClick={() => onSort(column.key)} key={index}>{column.name}</th>
+                ))}
             </tr>
             </thead>
             <tbody>
-            {sortedData.map((course) => (
-                <tr key={course.id}>
-                    {
-                        config.map(column=>{
-                            const key=column.key
-                            return (
-                                <td>{course[key]}</td>
-                            )
-                        })
-                    }
+            {sortedData.map((row,index) => (
+                <tr key={row.id} >
+                    {columns.map((column,index) => (
+                        <td key={index}>{column.selector(row)}</td>
+                    ))}
                 </tr>
             ))}
             </tbody>

@@ -1,7 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../sidebar.css'
+import {Button} from "react-bootstrap";
+import {useDispatch} from "react-redux";
+import {clearUser} from "../slice/userSlice";
+import {resetCookie} from "../utils/cookie";
 function Sidebar() {
+    const dispatch=useDispatch()
+    const logoutHandler=(e)=>{
+        e.preventDefault()
+        resetCookie()
+        dispatch(clearUser())
+    }
     return (
         <nav className="sidebar ">
             <div className="sidebar-header">
@@ -32,6 +42,11 @@ function Sidebar() {
                 <li>
                     <Link to="/addEvent" className="nav-link">
                         添加临时事务
+                    </Link>
+                </li>
+                <li>
+                    <Link onClick={logoutHandler}>
+                        注销
                     </Link>
                 </li>
             </ul>
