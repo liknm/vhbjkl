@@ -2,18 +2,13 @@ import SortTable from "../../components/SortTable";
 import {useEffect, useState} from "react";
 import courseService from '../../services/course'
 import locationList from '../../utils/locationList.json'
+import {useDispatch, useSelector} from "react-redux";
+import {setCourses} from "../../slice/dataSlice";
+import {timeStart} from "../../slice/timeSlice";
+import {intToWeekday} from "../../utils/functions";
 const CourseTable =  () => {
-    const [data,setData]=useState([])
-    useEffect( () => {
-        courseService.getAll()
-            .then((result)=>{
+    const courses=useSelector(state => state.data.courses)
 
-                setData(result)
-            })
-            .catch((error)=>{
-                console.log(error)
-            })
-    },[])
     const columns=[
         {
             key:'id',
@@ -24,6 +19,11 @@ const CourseTable =  () => {
             key:'name',
             name:'课程名称',
             selector:row=>row.name
+        },
+        {
+          key:'weekday',
+            name:'上课日期',
+            selector:row => intToWeekday(row.weekday)
         },
         {
             key:'start',
@@ -48,7 +48,9 @@ const CourseTable =  () => {
     ]
   return (
       <div>
-          <SortTable columns={columns} tableData={data}/>
+          <br/>
+          <h1>课程查询</h1>
+          <SortTable columns={columns} tableData={courses}/>
       </div>
   )
 }

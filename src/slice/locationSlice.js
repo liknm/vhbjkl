@@ -9,5 +9,5 @@ const locationSlice=createSlice({
         }
     }
 })
-export default locationSlice
+export default locationSlice.reducer
 export const {setLocationList}=locationSlice.actions

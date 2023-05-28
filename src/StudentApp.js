@@ -1,5 +1,5 @@
 import React from 'react';
-import ScheduleTable from './pages/student/ScheduleTable';
+import ScheduleSearch from './pages/student/ScheduleSearch';
 import './index.css'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Sidebar from './components/Sidebar';
@@ -21,7 +21,7 @@ function StudentApp() {
                 </div>
                 <div className="col-md-10">
                     <Routes>
-                        <Route path="/" element={<ScheduleTable scheduleData={scheduleData}/>}/>
+                        <Route path="/" element={<ScheduleSearch scheduleData={scheduleData}/>}/>
                         <Route path='/courses' element={<CourseTable tableData={courseData}/>}/>
                         <Route path='/exams' element={<ExamTable tableData={examData}/>}/>
                         <Route path='/events' element={<EventTable tableData={eventData}/>}/>

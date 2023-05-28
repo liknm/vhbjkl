@@ -16,7 +16,5 @@ export const loadCookie = () => {
     const username = cookie.get('username') || null
     const userClass = cookie.get('userClass') || null
     const userGroup = cookie.get('userGroup') || null
-    const user = {username, userClass, userGroup}
-    console.log(user)
-    return user
+    return {username, userClass, userGroup}
 }

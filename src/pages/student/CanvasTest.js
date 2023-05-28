@@ -1,13 +1,13 @@
-/*
-import mapImage from '../imgs/xtc.jpg'
-const CanvasTest=()=>{
-    const img=new Image()
-    img.src=mapImage
+import Canvas from "../../components/Canvas";
+import {useSelector} from "react-redux";
+import status from "../../services/status";
+import {useState} from "react";
 
-return (
-    <div>
-        <canvas></canvas>
-    </div>
-)
+const CanvasTest=()=>{
+    const expoints=useSelector(state => state.navigation)
+    console.log(expoints)
+    return (
+        <Canvas expoints={expoints}/>
+    )
 }
-export default CanvasTest*/
+export default CanvasTest

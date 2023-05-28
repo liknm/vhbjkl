@@ -4,26 +4,32 @@ import LoginLayout from "./layouts/LoginLayout";
 import {BrowserRouter} from "react-router-dom";
 import cookie, {loadCookie, setCookie} from "./utils/cookie";
 import {setUser} from "./slice/userSlice";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import locationService from "./services/location";
 import {setLocationList} from "./slice/locationSlice";
+import {ToastContainer} from "react-toastify";
+import {SnackbarProvider} from "notistack";
 
-const App=()=>{
-    const dispatch=useDispatch()
-    const userGroup=useSelector(state => state.user.userGroup)
+const App = () => {
+    const dispatch = useDispatch()
+    const userGroup = useSelector(state => state.user.userGroup)
 
-    useEffect(()=>{
-        const user=loadCookie()
+    useEffect(() => {
+        const user = loadCookie()
         dispatch(setUser(user))
-    },[dispatch])
+    }, [dispatch])
     return (
-        <BrowserRouter>
-            {
-                userGroup?
-                    <DefaultLayout/>:
-                    <LoginLayout/>
-            }
-        </BrowserRouter>
+        <div>
+
+            <BrowserRouter>
+                <SnackbarProvider />
+                {
+                    userGroup ?
+                        <DefaultLayout/> :
+                        <LoginLayout/>
+                }
+            </BrowserRouter>
+        </div>
     )
 }
 export default App

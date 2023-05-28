@@ -9,7 +9,7 @@ function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [showAlert, setShowAlert] = useState(false);
-    const [userGroup,setUserGroup]=useState('student')
+    const [userGroup,setUserGroup]=useState('admin')
     const dispatch = useDispatch();
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -46,9 +46,33 @@ function LoginPage() {
                             <Form.Control type="password" placeholder="请输入密码" value={password}
                                           onChange={(e) => setPassword(e.target.value)}/>
                         </Form.Group>
+                        <Form.Group controlId="userGroup">
+                            <Form.Label>用户组：    </Form.Label>
+                            <>
+                                <Form.Check
+                                    inline
+                                    type="radio"
+                                    label="管理员"
+                                    name="userGroup"
+                                    value="admin"
+                                    checked={userGroup === "admin"}
+                                    onChange={(e) => setUserGroup(e.target.value)}
+                                />
+                                <Form.Check
+                                    inline
+                                    type="radio"
+                                    label="学生"
+                                    name="userGroup"
+                                    value="user"
+                                    checked={userGroup === "user"}
+                                    onChange={(e) => setUserGroup(e.target.value)}
+                                />
+                            </>
+                        </Form.Group>
+
 
                         <br/>
-                        <div style={{display:'flex'}}>
+                        <div >
                             <Button variant="primary" type="submit" key="login">
                                 登录
                             </Button>

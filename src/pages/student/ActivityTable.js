@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setEvents} from "../../slice/dataSlice";
 import {timeStart} from "../../slice/timeSlice";
 import * as events from "events";
-const EventTable =  ({isActivity=false}) => {
+const ActivityTable =  ({isActivity=true}) => {
     const rawData=useSelector(state => state.data.events)
     const data=rawData.filter(event=>{
         if (isActivity===false) {
@@ -92,4 +92,4 @@ const EventTable =  ({isActivity=false}) => {
         </div>
     )
 }
-export default EventTable
+export default ActivityTable
