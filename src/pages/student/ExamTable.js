@@ -1,12 +1,7 @@
 import SortTable from "../../components/SortTable";
-import {useEffect, useState} from "react";
-import examService from "../../services/exam";
 import locationList from '../../utils/locationList.json'
-import {dateFormatter, defaultMomentFormat} from "../../utils/functions";
-import moment from "moment";
-import {useDispatch, useSelector} from "react-redux";
-import {setExams} from "../../slice/dataSlice";
-import {timeStart} from "../../slice/timeSlice";
+import {dateFormatter} from "../../utils/functions";
+import {useSelector} from "react-redux";
 
 const ExamTable = () => {
     const columns = [

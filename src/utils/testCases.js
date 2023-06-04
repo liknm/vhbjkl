@@ -36,9 +36,9 @@ export const scheduleData = [
         weekday: 2,
     },
     {
-        id:3,
-        name:'组成原理',
-        start:9,
+        id: 3,
+        name: '组成原理',
+        start: 9,
         duration: 1,
         weekday: 1
     },
@@ -51,11 +51,11 @@ export const scheduleData = [
     },
 ];
 export const examData = [
-    { id: 1, name: 'Test 1', start: '2022-04-01', end: '2022-04-02', location: 'Location 1' },
-    { id: 2, name: 'Test 2', start: '2022-04-03', end: '2022-04-04', location: 'Location 2' },
-    { id: 3, name: 'Test 3', start: '2022-04-05', end: '2022-04-06', location: 'Location 3' },
+    {id: 1, name: 'Test 1', start: '2022-04-01', end: '2022-04-02', location: 'Location 1'},
+    {id: 2, name: 'Test 2', start: '2022-04-03', end: '2022-04-04', location: 'Location 2'},
+    {id: 3, name: 'Test 3', start: '2022-04-05', end: '2022-04-06', location: 'Location 3'},
 ];
-export const eventData=[
+export const eventData = [
     {
         id: 1,
         name: 'Laundry',

@@ -5,7 +5,7 @@
 .login-title {
     color: #2f2f2f;
     font-weight: bold;
-    text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
     animation: fadeInDown 0.8s ease;
 }
 
@@ -18,8 +18,8 @@
     margin-top: 20px;
     background-color: #2196f3;
     border: none;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
 }
 

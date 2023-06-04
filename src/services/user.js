@@ -1,11 +1,19 @@
 import {apiUrl} from "../utils/config";
 import axios from "axios";
-const register=({ username, name, className, password })=>{
-    const result=axios.post(`${apiUrl}/user`,{ username, name, className, password })
-    if (result.message==='success') {
-        return true
-    } else {
-        throw Error('创建用户失败')
+import {enqueueSnackbar} from "notistack";
+
+const register = async ({username, name, className, password}) => {
+    try {
+        const result = await axios.post(`${apiUrl}/user`, {username, name, className, password})
+        console.log('response')
+        console.log(result.data)
+        return result.data.message
+    } catch (e) {
+        enqueueSnackbar('注册失败')
     }
 }
-export default {register}
+const login = async (username, password, userGroup) => {
+    const result = await axios.post(`${apiUrl}/login`, {username, password, userGroup})
+    return result.data.message
+}
+export default {register, login}

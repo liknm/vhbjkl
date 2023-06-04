@@ -2,13 +2,13 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {logout} from "../slice/userSlice";
 
-const LogOut=()=>{
-    const navigate=useNavigate()
-    const dispatch=useDispatch()
+const LogOut = () => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     dispatch(logout())
     navigate('/')
     return (
-        <div >
+        <div>
             <LogOut></LogOut>
         </div>
     )

@@ -4,10 +4,11 @@ import {useNavigate} from "react-router-dom";
 import {setNavigation} from "../slice/navigationSlice";
 
 const NavigateTo = ({target}) => {
-    const dispatch=useDispatch()
-    const navigate=useNavigate()
-    const clickHandler=()=>{
-        dispatch(setNavigation([1,target]))
+    console.log(target)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const clickHandler = () => {
+        dispatch(setNavigation([1, target]))
         navigate('/navigation')
     }
     return (

@@ -6,6 +6,7 @@ export const setCookie = (username, userGroup, userClass) => {
     cookie.set('username', username)
     cookie.set('userClass', userClass)
     cookie.set('userGroup', userGroup)
+    console.log(username)
 }
 export const resetCookie = () => {
     cookie.remove('username')

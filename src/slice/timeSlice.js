@@ -13,7 +13,7 @@ const timeSlice = createSlice({
             state.currentTime = new Date().getTime()
         },
         updateTime: (state, action) => {
-            if (!state.paused){
+            if (!state.paused) {
                 if (state.accelerated) {
                     state.currentTime += 1800000
                 } else {
@@ -38,4 +38,4 @@ const timeSlice = createSlice({
     }
 })
 export default timeSlice.reducer
-export const {resetTime, toggleAccelerated, updateTime, setAccelerated,timePause,timeStart} = timeSlice.actions
+export const {resetTime, toggleAccelerated, updateTime, setAccelerated, timePause, timeStart} = timeSlice.actions

@@ -1,22 +1,32 @@
 import React, {useState} from 'react';
-import {Form, Button, ButtonGroup, Container, Row, Col, Alert} from 'react-bootstrap';
+import {Alert, Button, Col, Container, Form, Row} from 'react-bootstrap';
 import {useDispatch} from 'react-redux';
-import {Link, useNavigate} from "react-router-dom";
-import userService from '../services/api'
+import {Link} from "react-router-dom";
+import userService from '../services/user'
 import {setUser} from "../slice/userSlice";
-import cookie, {setCookie} from "../utils/cookie";
+import {setCookie} from "../utils/cookie";
+import {enqueueSnackbar} from "notistack";
+
 function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [showAlert, setShowAlert] = useState(false);
-    const [userGroup,setUserGroup]=useState('admin')
+    const [userGroup, setUserGroup] = useState('admin')
     const dispatch = useDispatch();
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        const userClass=userService.login(username,password,userGroup)
-        if (userClass) {
-            dispatch(setUser({username, password, userGroup}))
-            setCookie(username,userGroup,userClass)
+        try {
+            e.preventDefault();
+            const loginMessage = await userService.login(username, password, userGroup)
+            console.log(loginMessage)
+            if (loginMessage) {
+                dispatch(setUser({username, password, userGroup}))
+                setCookie(username, userGroup, loginMessage)
+                enqueueSnackbar('登录成功')
+            } else {
+                enqueueSnackbar('登录失败')
+            }
+        } catch (e) {
+            enqueueSnackbar('登录失败')
         }
     };
 
@@ -47,7 +57,7 @@ function LoginPage() {
                                           onChange={(e) => setPassword(e.target.value)}/>
                         </Form.Group>
                         <Form.Group controlId="userGroup">
-                            <Form.Label>用户组：    </Form.Label>
+                            <Form.Label>用户组： </Form.Label>
                             <>
                                 <Form.Check
                                     inline
@@ -72,11 +82,11 @@ function LoginPage() {
 
 
                         <br/>
-                        <div >
+                        <div>
                             <Button variant="primary" type="submit" key="login">
                                 登录
                             </Button>
-                            <Link to='register' style={{float:'right'}}>
+                            <Link to='register' style={{float: 'right'}}>
                                 注册
                             </Link>
                         </div>

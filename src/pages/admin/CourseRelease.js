@@ -4,6 +4,7 @@ import locationList from '../../utils/locationList.json'
 import {intToWeekday, range} from "../../utils/functions";
 import courseService from "../../services/course";
 import {enqueueSnackbar} from "notistack";
+
 function CourseRelease() {
     const [name, setName] = useState('');
     const [weekday, setWeekday] = useState(1);
@@ -14,8 +15,8 @@ function CourseRelease() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = { name, weekday, startTime, duration, periodic, location };
-        const result=await courseService.addCourse(data)
+        const data = {name, weekday, startTime, duration, periodic, location};
+        const result = await courseService.addCourse(data)
         enqueueSnackbar(result.message)
 
     };
@@ -40,7 +41,7 @@ function CourseRelease() {
                         value={weekday}
                         onChange={(event) => setWeekday(parseInt(event.target.value))}
                     >
-                        {range(1,8).map((idx)=>(
+                        {range(1, 8).map((idx) => (
                             <option value={idx}>{intToWeekday(idx)}</option>
                         ))}
                     </Form.Control>
@@ -52,7 +53,7 @@ function CourseRelease() {
                         value={startTime}
                         onChange={(event) => setStartTime(parseInt(event.target.value))}
                     >
-                        {range(8,23).map((idx)=>(
+                        {range(8, 23).map((idx) => (
                             <option value={idx}>{idx}</option>
                         ))}
                     </Form.Control>
@@ -96,4 +97,5 @@ function CourseRelease() {
         </Container>
     );
 }
+
 export default CourseRelease

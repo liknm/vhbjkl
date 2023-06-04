@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
-import {Form, Button, Container} from 'react-bootstrap';
+import React, {useState} from 'react';
+import {Button, Container, Form} from 'react-bootstrap';
 import userService from '../services/user';
+import {enqueueSnackbar} from "notistack";
+import {useNavigate} from "react-router-dom";
 
 const RegisterForm = () => {
     const [username, setUsername] = useState('');
     const [name, setName] = useState('');
     const [className, setClassName] = useState('');
     const [password, setPassword] = useState('');
-
+    const navigate = useNavigate()
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const result=await userService.register({ username, name, className, password });
+            const result = await userService.register({username, name, className, password});
+            enqueueSnackbar(result)
+            navigate('/')
         } catch (error) {
             console.error(error);
         }

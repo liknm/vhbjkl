@@ -8,21 +8,22 @@ const initialState = {
 }
 
 const userSlice = createSlice({
-    name:'user',
+    name: 'user',
     initialState,
-    reducers:{
-        setUser:(state, action)=>{
-            const user=action.payload
-            state.username=user.username
-            state.userClass=user.userClass
-            state.userGroup=user.userGroup
+    reducers: {
+        setUser: (state, action) => {
+            const user = action.payload
+            state.username = user.username
+            state.userClass = user.userClass
+            state.userGroup = user.userGroup
+            console.log(state.username)
         },
-        clearUser:(state,action)=>{
-            state.username=null
-            state.userClass=null
-            state.userGroup=null
+        clearUser: (state, action) => {
+            state.username = null
+            state.userClass = null
+            state.userGroup = null
         }
     }
 })
 export default userSlice.reducer
-export const {setUser,clearUser}=userSlice.actions
+export const {setUser, clearUser} = userSlice.actions

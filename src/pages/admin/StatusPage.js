@@ -1,4 +1,4 @@
-const StatusPage=()=>{
+const StatusPage = () => {
     return (
         <div>
 

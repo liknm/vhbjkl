@@ -1,8 +1,9 @@
 import axios from "axios";
 import {apiUrl} from "../utils/config";
 
-async function getAllForStudent() {
-    const response = await axios.get(apiUrl + '/course')
+async function getAllForStudent(username) {
+    console.log(username)
+    const response = await axios.get(`${apiUrl}/user/${username}/course/all`)
     return response.data
 }
 
@@ -18,7 +19,7 @@ async function modifyCourse(editedCourse, courseId) {
 }
 
 async function addCourse(course) {
-    try{
+    try {
         const result = await axios.post(`${apiUrl}/course`, course)
         console.log(result.data)
         return result.data

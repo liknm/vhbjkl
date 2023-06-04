@@ -2,17 +2,16 @@ import {inAnHour, withInAnHour} from "../utils/functions";
 import {enqueueSnackbar} from "notistack";
 import {useSelector} from "react-redux";
 import locationList from '../utils/locationList.json'
-import * as events from "events";
 
 const coursesNotified = new Set()
 const examsNotified = new Set()
-const eventsNotified=new Set()
+const eventsNotified = new Set()
 let weeklyReset = false
 const Notification = () => {
     const courses = useSelector(state => state.data.courses)
     const exams = useSelector(state => state.data.exams)
     const systemTime = useSelector(state => state.time.currentTime)
-    const events=useSelector(state => state.data.events)
+    const events = useSelector(state => state.data.events)
     const systemDate = new Date(systemTime)
     const currentWeekday = systemDate.getDay()
     const currentHour = systemDate.getHours()
@@ -40,14 +39,14 @@ const Notification = () => {
     exams.forEach(exam => {
         if (inAnHour(systemTime, exam.startTime &&
             !examsNotified.has(exam.id))) {
-            const location=locationList[exam.location].name
+            const location = locationList[exam.location].name
             enqueueSnackbar(`考试 ${exam.name} 即将在 ${location}开始`)
         }
     })
     events.forEach(e => {
         if (inAnHour(systemTime, e.startTime &&
             !eventsNotified.has(e.id))) {
-            const location=locationList[e.location].name
+            const location = locationList[e.location].name
             enqueueSnackbar(`临时事务 ${e.name} 即将在 ${location}开始`)
         }
     })

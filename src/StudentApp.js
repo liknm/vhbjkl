@@ -1,15 +1,13 @@
 import React from 'react';
 import ScheduleSearch from './pages/student/ScheduleSearch';
 import './index.css'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import CourseTable from "./pages/student/CourseTable";
 import ExamTable from "./pages/student/ExamTable";
-import {courseData, scheduleData, examData, eventData} from "./utils/testCases";
+import {courseData, eventData, examData, scheduleData} from "./utils/testCases";
 import EventTable from "./pages/student/EventTable";
 //import EventForm from "./pages/student/EventForm";
-import CanvasTest from "./pages/student/CanvasTest";
-import Login from "./pages/LoginPage";
 import LogOut from "./pages/LogOut";
 
 function StudentApp() {

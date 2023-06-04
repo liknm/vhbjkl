@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import NavigationMap from "./NavigationMap";
 
 function NavigationModal() {
     const [show, setShow] = useState(false);
@@ -19,7 +18,7 @@ function NavigationModal() {
                     <Modal.Title>导航</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div ></div>
+                    <div></div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
@@ -33,4 +32,5 @@ function NavigationModal() {
         </>
     );
 }
+
 export default NavigationModal

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import '../sidebar.css'
-import {Button} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {clearUser} from "../slice/userSlice";
 import {resetCookie} from "../utils/cookie";
@@ -24,8 +23,8 @@ function Sidebar() {
         {to: "/exams", name: "考试查询"},
         {to: "/events", name: "临时事务查询"},
         {to: "/addEvent", name: "添加临时事务"},
-        {to:'/activity',name:'课外活动查询'},
-        {to:"/navigation",name:'导航'},
+        {to: '/activity', name: '课外活动查询'},
+        {to: '/addActivity', name: '添加课外活动'}
     ];
     const adminNav = [
         {to: '/', name: '总览'},
@@ -33,7 +32,7 @@ function Sidebar() {
         {to: '/modifyCourse', name: '修改课程'},
         {to: '/releaseExam', name: '发布考试'},
         {to: '/modifyExam', name: '修改考试'},
-        {to:'/addActivity',name:'发布课外活动'},
+        {to: '/addActivity', name: '发布课外活动'},
     ]
     const finalNav = (userGroup === 'admin'
         ? adminNav
@@ -41,11 +40,11 @@ function Sidebar() {
     return (
         <div className='sidebar'>
             <div className="sidebar-header">
-                <h3>傻逼代码合集</h3>
+                <h3>正能量管理系统</h3>
             </div>
             <ul className="list-unstyled components">
                 {
-                    finalNav.map((nav,index) => {
+                    finalNav.map((nav, index) => {
                         return (
                             <li key={index}>
                                 <Link to={nav.to} className='nav-link'>
@@ -62,9 +61,6 @@ function Sidebar() {
                 </li>
                 <li>
                     <TimeSwitch/>
-                </li>
-                <li>
-                    <NavigationModal/>
                 </li>
             </ul>
         </div>

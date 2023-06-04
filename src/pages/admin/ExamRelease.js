@@ -4,7 +4,6 @@ import moment from "moment";
 import locationList from '../../utils/locationList.json'
 import examService from "../../services/exam";
 import {enqueueSnackbar} from "notistack";
-import {setExams} from "../../slice/dataSlice";
 
 function ExamRelease() {
     const [name, setName] = useState('');
@@ -15,7 +14,7 @@ function ExamRelease() {
         event.preventDefault();
         try {
 
-            const result = await examService.releaseExam({name,startTime,endTime,location})
+            const result = await examService.releaseExam({name, startTime, endTime, location})
             enqueueSnackbar('考试发布成功')
             setStartTime(moment().toDate())
             setEndTime(moment().toDate())

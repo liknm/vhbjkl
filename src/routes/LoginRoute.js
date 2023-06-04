@@ -4,7 +4,7 @@ import RegisterPage from "../pages/RegisterPage";
 import React from "react";
 import NotFound from "../pages/NotFound";
 
-const LoginRoute=()=>{
+const LoginRoute = () => {
     return (
         <div>
             <Routes>

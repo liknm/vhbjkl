@@ -1,15 +1,13 @@
 import {Route, Routes} from "react-router-dom";
 import ScheduleSearch from "../pages/student/ScheduleSearch";
-import {courseData, eventData, examData, scheduleData} from "../utils/testCases";
 import CourseTable from "../pages/student/CourseTable";
 import ExamTable from "../pages/student/ExamTable";
 import EventTable from "../pages/student/EventTable";
 import React, {useEffect} from "react";
 import EventForm from "../pages/student/EventForm";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import eventService from "../services/event";
 import {setCourses, setEventCategoryList, setEvents, setExams} from "../slice/dataSlice";
-import {timeStart} from "../slice/timeSlice";
 import examService from "../services/exam";
 import courseService from "../services/course";
 import CanvasTest from "../pages/student/CanvasTest";
@@ -18,22 +16,26 @@ import ActivityTable from "../pages/student/ActivityTable";
 <Route path="/" element={<ScheduleSearch scheduleData={scheduleData}/>}/>*/
 const StudentRoute = () => {
     const dispatch = useDispatch()
+    const username = useSelector(state => state.user.username)
+    console.log(username)
     useEffect(() => {
-        eventService.getAllStudent()
+        eventService.getAllForStudent(username)
             .then((result) => {
                 dispatch(setEvents(result))
             })
             .catch((error) => {
                 console.log(error)
             })
-        examService.getAllForStudent()
+        examService.getAllForStudent(username)
             .then((result) => {
                 dispatch(setExams(result))
+                console.log('exam')
+                console.log(result)
             })
             .catch((error) => {
                 console.log(error)
             })
-        courseService.getAllForStudent()
+        courseService.getAllForStudent(username)
             .then((result) => {
                 console.log(result)
                 dispatch(setCourses(result))
@@ -47,16 +49,17 @@ const StudentRoute = () => {
             }).catch(error => {
             console.log(error)
         })
-    }, [])
+    }, [dispatch, username])
     return (
         <Routes>
-            <Route path="/" element={<ScheduleSearch />}/>
+            <Route path="/" element={<ScheduleSearch/>}/>
             <Route path='/courses' element={<CourseTable/>}/>
             <Route path='/exams' element={<ExamTable/>}/>
             <Route path='/events' element={<EventTable/>}/>
             <Route path={'/addEvent'} element={<EventForm/>}/>
             <Route path={'/navigation'} element={<CanvasTest/>}/>
             <Route path={'/activity'} element={<ActivityTable/>}/>
+            <Route path={'/addActivity'} element={<EventForm category={'activity'}/>}/>
         </Routes>
     )
 }

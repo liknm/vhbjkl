@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import {useEffect, useState} from "react";
+import {Button, Container, Form} from "react-bootstrap";
 import courseService from "../../services/course";
 import locationList from '../../utils/locationList.json';
-import { enqueueSnackbar } from "notistack";
+import {enqueueSnackbar} from "notistack";
 
 const CourseModify = () => {
     // 初始化状态
@@ -15,7 +15,7 @@ const CourseModify = () => {
     const [periodic, setPeriodic] = useState(false); // 是否为周期性上课
     const [location, setLocation] = useState(0); // 上课地点
     const [isLoading, setIsLoading] = useState(false); // 是否正在提交表单
-    const [courseId,setCourseId]=useState(null)
+    const [courseId, setCourseId] = useState(null)
     // 加载所有课程
     useEffect(() => {
         courseService.getAllForAdmin()
@@ -46,13 +46,13 @@ const CourseModify = () => {
         setIsLoading(true);
 
         const editedCourse = {
-            time:startTime,
-            location:location,
-            weekday:weekday,
-            duration:duration
+            time: startTime,
+            location: location,
+            weekday: weekday,
+            duration: duration
         };
 
-        const result = await courseService.modifyCourse(editedCourse,courseId);
+        const result = await courseService.modifyCourse(editedCourse, courseId);
 
         setIsLoading(false);
         if (result) {

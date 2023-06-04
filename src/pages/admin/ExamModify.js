@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import axios from "axios";
 import {Button, Container, Form} from "react-bootstrap";
 import examService from "../../services/exam";
 import locationList from '../../utils/locationList.json'

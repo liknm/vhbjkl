@@ -1,17 +1,10 @@
 import Sidebar from "../components/Sidebar";
-import React, {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React from "react";
+import {useSelector} from "react-redux";
 import StudentRoute from "../routes/StudentRoute";
 import AdminRoute from "../routes/AdminRoute";
-import Message from "../components/Message";
-import {Container} from "react-bootstrap";
-import {ToastContainer} from "react-toastify";
 import Notification from "../components/Notification";
-import eventService from "../services/event";
-import {setCourses, setEvents, setExams} from "../slice/dataSlice";
-import {timeStart} from "../slice/timeSlice";
-import examService from "../services/exam";
-import courseService from "../services/course";
+
 const DefaultLayout = () => {
     const userGroup = useSelector(state => state.user.userGroup)
 

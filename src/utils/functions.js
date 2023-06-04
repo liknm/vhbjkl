@@ -1,7 +1,8 @@
 import moment from "moment";
-export const intToWeekday=(n)=>{
-    const weekdays=["星期一","星期二","星期三","星期四","星期五","星期六","星期日"]
-    return weekdays[n-1]
+
+export const intToWeekday = (n) => {
+    const weekdays = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
+    return weekdays[n - 1]
 }
 // moment是一个专门处理时间日期的模块
 
@@ -102,19 +103,19 @@ moment.locale('zh-cn', {
         doy: 4  // The week that contains Jan 4th is the first week of the year.
     }
 })
-export const dateFormatter=(date)=>{
+export const dateFormatter = (date) => {
     return moment(date).format('lll')
 }
-export const timeFormatter=(date)=>{
+export const timeFormatter = (date) => {
     return moment(date).format('YYYY/MM/DD, HH:mm:ss')
 }
-export const withInAnHour=(baseHour,baseMinute,targetHour)=>{
-    const interval=((targetHour*60)-(baseHour*60+baseMinute));
-    return interval<=60 && interval>0
+export const withInAnHour = (baseHour, baseMinute, targetHour) => {
+    const interval = ((targetHour * 60) - (baseHour * 60 + baseMinute));
+    return interval <= 60 && interval > 0
 }
-export const inAnHour=(baseTime,targetTime)=>{
-    const interval=targetTime-baseTime
-    return ((interval<=3600*1000)&& (interval>0) )
+export const inAnHour = (baseTime, targetTime) => {
+    const interval = targetTime - baseTime
+    return ((interval <= 3600 * 1000) && (interval > 0))
 }
 
 export const range = (start, end, step = 1) => {
@@ -128,3 +129,6 @@ export const range = (start, end, step = 1) => {
     }
     return output;
 };
+
+export class withinAnHour {
+}
